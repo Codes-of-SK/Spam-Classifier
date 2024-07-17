@@ -6,7 +6,7 @@ import nltk
 from nltk.stem.porter import PorterStemmer
 
 nltk.download("punkt")
-nltk.download('stopwords')
+nltk.download("stopwords")
 ps = PorterStemmer()
 
 
@@ -51,7 +51,9 @@ if st.button("Predict"):
     # 3. predict
     result = model.predict(vector_input)[0]
     # 4. Display
-    if result == 1:
+    if len(transformed_sms) == 0:
+        st.header("Enter a proper message!")
+    elif result == 1:
         st.header("Spam")
     else:
         st.header("Not Spam")
